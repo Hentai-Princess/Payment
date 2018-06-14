@@ -7,59 +7,59 @@
 #include <string>
 #include "HelpUtils.h"
 
-//подтип адрес 
+//РїРѕРґС‚РёРї Р°РґСЂРµСЃ 
 class MyAddress {
 
-	// проверка адреса на корректность
+	// РїСЂРѕРІРµСЂРєР° Р°РґСЂРµСЃР° РЅР° РєРѕСЂСЂРµРєС‚РЅРѕСЃС‚СЊ
 	bool CorrectAddress(int house, int flat, string &message) {
 		if ((house > 100) || (house < 1) || (flat > 1000) || (flat < 1))
 			{
-				message = "Неверное задан адрес!";
+				message = "РќРµРІРµСЂРЅРѕРµ Р·Р°РґР°РЅ Р°РґСЂРµСЃ!";
 				return false;
 			}
 	}
 
 public:
-	//дом
+	//РґРѕРј
 	int house;
-	//квартира
+	//РєРІР°СЂС‚РёСЂР°
 	int flat;
 
-	//конструктор по умолчанию
+	//РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ
 	MyAddress()
 	{
 		int house = 1;
 		int flat = 1;
 	}
 
-	// ввод даты с консоли
+	// РІРІРѕРґ РґР°С‚С‹ СЃ РєРѕРЅСЃРѕР»Рё
 	void InputAddress()
 	{
-		bool correct_address = true; // корректна ли введенная дата
-		string message = "";  // сообщение о причине ошибки
+		bool correct_address = true; // РєРѕСЂСЂРµРєС‚РЅР° Р»Рё РІРІРµРґРµРЅРЅР°СЏ РґР°С‚Р°
+		string message = "";  // СЃРѕРѕР±С‰РµРЅРёРµ Рѕ РїСЂРёС‡РёРЅРµ РѕС€РёР±РєРё
 		do
 		{
 			if (!correct_address)
 				cout << message << endl;
-			house = InputNumber(1, 100, "Ввод адреса:\nВведите номер дома (1-100): ");
-			flat = InputNumber(1, 1000, "Введите номер квартиры (1-1000): ");
+			house = InputNumber(1, 100, "Р’РІРѕРґ Р°РґСЂРµСЃР°:\nР’РІРµРґРёС‚Рµ РЅРѕРјРµСЂ РґРѕРјР° (1-100): ");
+			flat = InputNumber(1, 1000, "Р’РІРµРґРёС‚Рµ РЅРѕРјРµСЂ РєРІР°СЂС‚РёСЂС‹ (1-1000): ");
 			correct_address = CorrectAddress(house, flat, message);
-		} while (!correct_address);  // повторять ввод пока не корректная дата
+		} while (!correct_address);  // РїРѕРІС‚РѕСЂСЏС‚СЊ РІРІРѕРґ РїРѕРєР° РЅРµ РєРѕСЂСЂРµРєС‚РЅР°СЏ РґР°С‚Р°
 	}
 
-	// перевод даты в строку (для последующей записи в файл)
+	// РїРµСЂРµРІРѕРґ РґР°С‚С‹ РІ СЃС‚СЂРѕРєСѓ (РґР»СЏ РїРѕСЃР»РµРґСѓСЋС‰РµР№ Р·Р°РїРёСЃРё РІ С„Р°Р№Р»)
 	string ToString()
 	{
-		return ("дом " + to_string(house) + " квартира " + to_string(flat));
+		return ("РґРѕРј " + to_string(house) + " РєРІР°СЂС‚РёСЂР° " + to_string(flat));
 	}
 
-	// перегруженный оператор равенства
+	// РїРµСЂРµРіСЂСѓР¶РµРЅРЅС‹Р№ РѕРїРµСЂР°С‚РѕСЂ СЂР°РІРµРЅСЃС‚РІР°
 	bool operator == (const MyAddress &c)
 	{
 		return ((house == c.house) && (flat == c.flat));
 	}
 
-	// конструктор копирования
+	// РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РєРѕРїРёСЂРѕРІР°РЅРёСЏ
 	MyAddress& operator = (MyAddress c)
 	{
 		house = c.house;
@@ -70,10 +70,10 @@ public:
 
 };
 
-//подтип дата
+//РїРѕРґС‚РёРї РґР°С‚Р°
 class MyDate {
 
-	// проверка является ли год високосным
+	// РїСЂРѕРІРµСЂРєР° СЏРІР»СЏРµС‚СЃСЏ Р»Рё РіРѕРґ РІРёСЃРѕРєРѕСЃРЅС‹Рј
 	bool IsLeap(int year)
 	{
 		if (year % 4)
@@ -83,34 +83,34 @@ class MyDate {
 		return !(year % 400);
 	}
 
-	// проверка даты на корректность
+	// РїСЂРѕРІРµСЂРєР° РґР°С‚С‹ РЅР° РєРѕСЂСЂРµРєС‚РЅРѕСЃС‚СЊ
 	bool CorrectDate(int day, int month, int year,string &message) {
 
-	    // если год вискосный                            если не високосный
+	    // РµСЃР»Рё РіРѕРґ РІРёСЃРєРѕСЃРЅС‹Р№                            РµСЃР»Рё РЅРµ РІРёСЃРѕРєРѕСЃРЅС‹Р№
 		if ((month == 2 && day > 29 && IsLeap(year)) || (month == 2 && day > 28 && !IsLeap(year)))
 		{
-			message = "Неверное кол-во дней в феврале!";
+			message = "РќРµРІРµСЂРЅРѕРµ РєРѕР»-РІРѕ РґРЅРµР№ РІ С„РµРІСЂР°Р»Рµ!";
 			return false;
 		}
-		//кол-во дней в месяце
+		//РєРѕР»-РІРѕ РґРЅРµР№ РІ РјРµСЃСЏС†Рµ
 		if (month == 4 || month == 6 || month == 9 || month == 11)
 		{
 			if (day > 30) 
 			{
-				message = "Неверное кол-во дней в месяце!";
+				message = "РќРµРІРµСЂРЅРѕРµ РєРѕР»-РІРѕ РґРЅРµР№ РІ РјРµСЃСЏС†Рµ!";
 				return false;
 			}
 		}
 	}
 public:
-	// день
+	// РґРµРЅСЊ
 	int day;
-	// месяц
+	// РјРµСЃСЏС†
 	int month;
-	// год
+	// РіРѕРґ
 	int year;
 
-	// конструктор по умолчанию
+	// РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ
 	MyDate()
 	{
 		int day=1;
@@ -118,35 +118,35 @@ public:
 		int year = 1970;
 	}
 
-	// ввод даты с консоли
+	// РІРІРѕРґ РґР°С‚С‹ СЃ РєРѕРЅСЃРѕР»Рё
 	void InputDate()
 	{
-		bool correct_date = true; // корректна ли введенная дата
-		string message = "";  // сообщение о причине ошибки
+		bool correct_date = true; // РєРѕСЂСЂРµРєС‚РЅР° Р»Рё РІРІРµРґРµРЅРЅР°СЏ РґР°С‚Р°
+		string message = "";  // СЃРѕРѕР±С‰РµРЅРёРµ Рѕ РїСЂРёС‡РёРЅРµ РѕС€РёР±РєРё
 		do
 		{
 			if (!correct_date)
 				cout << message << endl;
-			day = InputNumber(1, 31, "Ввод даты:\nВведите день (1-31): ");
-			month = InputNumber(1, 12, "Введите номер месяца (1-12): ");
-			year = InputNumber(1970, 2100, "Введите год (1970-2100): ");
+			day = InputNumber(1, 31, "Р’РІРѕРґ РґР°С‚С‹:\nР’РІРµРґРёС‚Рµ РґРµРЅСЊ (1-31): ");
+			month = InputNumber(1, 12, "Р’РІРµРґРёС‚Рµ РЅРѕРјРµСЂ РјРµСЃСЏС†Р° (1-12): ");
+			year = InputNumber(1970, 2100, "Р’РІРµРґРёС‚Рµ РіРѕРґ (1970-2100): ");
 			correct_date = CorrectDate(day, month, year, message);
-		} while (!correct_date);  // повторять ввод пока не корректная дата
+		} while (!correct_date);  // РїРѕРІС‚РѕСЂСЏС‚СЊ РІРІРѕРґ РїРѕРєР° РЅРµ РєРѕСЂСЂРµРєС‚РЅР°СЏ РґР°С‚Р°
 	}
 
-	// перевод даты в строку (для последующей записи в файл)
+	// РїРµСЂРµРІРѕРґ РґР°С‚С‹ РІ СЃС‚СЂРѕРєСѓ (РґР»СЏ РїРѕСЃР»РµРґСѓСЋС‰РµР№ Р·Р°РїРёСЃРё РІ С„Р°Р№Р»)
 	 string ToString()
 	{
 		return (to_string(day) + ' ' + to_string(month) + ' ' + to_string(year));
 	}
 	
-	// перегруженный оператор равенства
+	// РїРµСЂРµРіСЂСѓР¶РµРЅРЅС‹Р№ РѕРїРµСЂР°С‚РѕСЂ СЂР°РІРµРЅСЃС‚РІР°
 	bool operator == (const MyDate &c)
 	{
 		return ((day == c.day) && (month == c.month) && (year == c.year));
 	}
 
-	// конструктор копирования
+	// РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РєРѕРїРёСЂРѕРІР°РЅРёСЏ
 	MyDate& operator = (MyDate c)
 	{
 		day = c.day;
@@ -156,13 +156,13 @@ public:
 		return (*this);
 	}
 
-	// перегруженный оператор больше
+	// РїРµСЂРµРіСЂСѓР¶РµРЅРЅС‹Р№ РѕРїРµСЂР°С‚РѕСЂ Р±РѕР»СЊС€Рµ
 	bool operator > (const MyDate &c)
 	{
 		return ((year > c.year) || ((year == c.year) && (month > c.month)) || ((year == c.year) && (month == c.month) && (day>c.day)));
 	}
 
-	// перегруженные оператор меньше
+	// РїРµСЂРµРіСЂСѓР¶РµРЅРЅС‹Рµ РѕРїРµСЂР°С‚РѕСЂ РјРµРЅСЊС€Рµ
 	bool operator < (const MyDate &c)
 	{
 		return ((year < c.year) || ((year == c.year) && (month < c.month)) || ((year == c.year) && (month == c.month) && (day<c.day)));
@@ -172,22 +172,22 @@ public:
 
 class Payment {
 public:
-	// адрес
+	// Р°РґСЂРµСЃ
 	MyAddress owner_address;
-	// фамилия
+	// С„Р°РјРёР»РёСЏ
 	string surname;
-	// вид платежа
+	// РІРёРґ РїР»Р°С‚РµР¶Р°
 	string payment_kind;
-	// дата платежа
+	// РґР°С‚Р° РїР»Р°С‚РµР¶Р°
 	MyDate payment_date;
-	// сумма платежа
+	// СЃСѓРјРјР° РїР»Р°С‚РµР¶Р°
 	int summ;
-	// процент пени
+	// РїСЂРѕС†РµРЅС‚ РїРµРЅРё
 	int percentage;
-	// количество просроченных дней
+	// РєРѕР»РёС‡РµСЃС‚РІРѕ РїСЂРѕСЃСЂРѕС‡РµРЅРЅС‹С… РґРЅРµР№
 	int bad_days;
 
-	// конструктор по умолчанию
+	// РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ
 	Payment()
 	{
 		MyAddress owner_address;;
@@ -200,28 +200,28 @@ public:
 	}
 
 
-	// изменение структуры "платеж"
+	// РёР·РјРµРЅРµРЅРёРµ СЃС‚СЂСѓРєС‚СѓСЂС‹ "РїР»Р°С‚РµР¶"
 	Payment ChangePayment(Payment &result)
 	{
-		if (InputNumber(0, 1, "Вы хотите изменить адрес  (0 - нет, 1 - да)\nВыш выбор: ") == 1)
+		if (InputNumber(0, 1, "Р’С‹ С…РѕС‚РёС‚Рµ РёР·РјРµРЅРёС‚СЊ Р°РґСЂРµСЃ  (0 - РЅРµС‚, 1 - РґР°)\nР’С‹С€ РІС‹Р±РѕСЂ: ") == 1)
 			result.owner_address.InputAddress();
-		if (InputNumber(0, 1, "Вы хотите изменить фамилию " + result.surname + " (0 - нет, 1 - да)\nВыш выбор: ") == 1)
-			result.surname = InputInformation("Введите новую фамилию: ");
-		if (InputNumber(0, 1, "Вы хотите изменить вид платежа " + result.payment_kind + " (0 - нет, 1 - да)\nВыш выбор: ") == 1)
-			result.payment_kind = InputInformation("Введите новый вид платежа: ");
-		if (InputNumber(0, 1, "Вы хотите изменить дату платежа  (0-нет, 1 - да)\nВыш выбор: ") == 1)
+		if (InputNumber(0, 1, "Р’С‹ С…РѕС‚РёС‚Рµ РёР·РјРµРЅРёС‚СЊ С„Р°РјРёР»РёСЋ " + result.surname + " (0 - РЅРµС‚, 1 - РґР°)\nР’С‹С€ РІС‹Р±РѕСЂ: ") == 1)
+			result.surname = InputInformation("Р’РІРµРґРёС‚Рµ РЅРѕРІСѓСЋ С„Р°РјРёР»РёСЋ: ");
+		if (InputNumber(0, 1, "Р’С‹ С…РѕС‚РёС‚Рµ РёР·РјРµРЅРёС‚СЊ РІРёРґ РїР»Р°С‚РµР¶Р° " + result.payment_kind + " (0 - РЅРµС‚, 1 - РґР°)\nР’С‹С€ РІС‹Р±РѕСЂ: ") == 1)
+			result.payment_kind = InputInformation("Р’РІРµРґРёС‚Рµ РЅРѕРІС‹Р№ РІРёРґ РїР»Р°С‚РµР¶Р°: ");
+		if (InputNumber(0, 1, "Р’С‹ С…РѕС‚РёС‚Рµ РёР·РјРµРЅРёС‚СЊ РґР°С‚Сѓ РїР»Р°С‚РµР¶Р°  (0-РЅРµС‚, 1 - РґР°)\nР’С‹С€ РІС‹Р±РѕСЂ: ") == 1)
 			result.payment_date.InputDate();
-		if (InputNumber(0, 1, "Вы хотите изменить сумму платежа " + to_string(result.summ) + "(0 - нет, 1 - да) \nВыш выбор: ") == 1)
-			result.summ = InputNumber(0, 10000, "Введите новую сумму платежа: ");
-		if (InputNumber(0, 1, "Вы хотите изменить процент пени " + to_string(result.percentage) + " (0 - нет, 1 - да)\nВыш выбор: ") == 1)
-			result.percentage = InputNumber(0, 100, "Введите новый процент пени: ");
-		if (InputNumber(0, 1, "Вы хотите изменить количество просроченных дней " + to_string(result.bad_days) + " (0 - нет, 1 - да)\nВыш выбор: ") == 1)
-			result.bad_days = InputNumber(0, 31, "Введите новое количество просроченных дней: ");
+		if (InputNumber(0, 1, "Р’С‹ С…РѕС‚РёС‚Рµ РёР·РјРµРЅРёС‚СЊ СЃСѓРјРјСѓ РїР»Р°С‚РµР¶Р° " + to_string(result.summ) + "(0 - РЅРµС‚, 1 - РґР°) \nР’С‹С€ РІС‹Р±РѕСЂ: ") == 1)
+			result.summ = InputNumber(0, 10000, "Р’РІРµРґРёС‚Рµ РЅРѕРІСѓСЋ СЃСѓРјРјСѓ РїР»Р°С‚РµР¶Р°: ");
+		if (InputNumber(0, 1, "Р’С‹ С…РѕС‚РёС‚Рµ РёР·РјРµРЅРёС‚СЊ РїСЂРѕС†РµРЅС‚ РїРµРЅРё " + to_string(result.percentage) + " (0 - РЅРµС‚, 1 - РґР°)\nР’С‹С€ РІС‹Р±РѕСЂ: ") == 1)
+			result.percentage = InputNumber(0, 100, "Р’РІРµРґРёС‚Рµ РЅРѕРІС‹Р№ РїСЂРѕС†РµРЅС‚ РїРµРЅРё: ");
+		if (InputNumber(0, 1, "Р’С‹ С…РѕС‚РёС‚Рµ РёР·РјРµРЅРёС‚СЊ РєРѕР»РёС‡РµСЃС‚РІРѕ РїСЂРѕСЃСЂРѕС‡РµРЅРЅС‹С… РґРЅРµР№ " + to_string(result.bad_days) + " (0 - РЅРµС‚, 1 - РґР°)\nР’С‹С€ РІС‹Р±РѕСЂ: ") == 1)
+			result.bad_days = InputNumber(0, 31, "Р’РІРµРґРёС‚Рµ РЅРѕРІРѕРµ РєРѕР»РёС‡РµСЃС‚РІРѕ РїСЂРѕСЃСЂРѕС‡РµРЅРЅС‹С… РґРЅРµР№: ");
 
 		return result;
 	}
 
-	// перегруженный оператор равенства для структуры "платеж"
+	// РїРµСЂРµРіСЂСѓР¶РµРЅРЅС‹Р№ РѕРїРµСЂР°С‚РѕСЂ СЂР°РІРµРЅСЃС‚РІР° РґР»СЏ СЃС‚СЂСѓРєС‚СѓСЂС‹ "РїР»Р°С‚РµР¶"
 	Payment& operator = (Payment c)
 	{
 		owner_address = c.owner_address;
@@ -236,49 +236,49 @@ public:
 	}
 };
 
-// функция ввода структуры "платеж" с консоли
+// С„СѓРЅРєС†РёСЏ РІРІРѕРґР° СЃС‚СЂСѓРєС‚СѓСЂС‹ "РїР»Р°С‚РµР¶" СЃ РєРѕРЅСЃРѕР»Рё
 Payment InputScreenPayment()
 {
 	Payment c;
 	c.owner_address.InputAddress();
-	c.surname = InputInformation("Введите фамилию: ");
-	c.payment_kind = InputInformation("Введите вид платежа: ");
+	c.surname = InputInformation("Р’РІРµРґРёС‚Рµ С„Р°РјРёР»РёСЋ: ");
+	c.payment_kind = InputInformation("Р’РІРµРґРёС‚Рµ РІРёРґ РїР»Р°С‚РµР¶Р°: ");
 	c.payment_date.InputDate();
-	c.summ = InputNumber(0, 10000, "Введите сумму платежа (0 - 10000): ");
-	c.percentage = InputNumber(0, 100, "Введите процент пени (0-100): ");
-	c.bad_days = InputNumber(0, 31, "Введите количество просроченных дней (0-31): ");
+	c.summ = InputNumber(0, 10000, "Р’РІРµРґРёС‚Рµ СЃСѓРјРјСѓ РїР»Р°С‚РµР¶Р° (0 - 10000): ");
+	c.percentage = InputNumber(0, 100, "Р’РІРµРґРёС‚Рµ РїСЂРѕС†РµРЅС‚ РїРµРЅРё (0-100): ");
+	c.bad_days = InputNumber(0, 31, "Р’РІРµРґРёС‚Рµ РєРѕР»РёС‡РµСЃС‚РІРѕ РїСЂРѕСЃСЂРѕС‡РµРЅРЅС‹С… РґРЅРµР№ (0-31): ");
 	return c;
 }
 
-// функция вывода структуры "платеж" на консоль
+// С„СѓРЅРєС†РёСЏ РІС‹РІРѕРґР° СЃС‚СЂСѓРєС‚СѓСЂС‹ "РїР»Р°С‚РµР¶" РЅР° РєРѕРЅСЃРѕР»СЊ
 void OutputScreenPayment(Payment c)
 {
-	cout << "Адрес: " << c.owner_address.ToString() << endl;
-	cout << "Фамилия: " << c.surname << endl;
-	cout << "Вид платежа: " << c.payment_kind << endl;
-	cout << "Дата: " << c.payment_date.ToString() << endl;
-	cout << "Сумма платежа: " << c.summ << endl;
-	cout << "Процент пени: " << c.percentage << endl;
-	cout << "Количество просроченных дней: " << c.bad_days<< endl;
+	cout << "РђРґСЂРµСЃ: " << c.owner_address.ToString() << endl;
+	cout << "Р¤Р°РјРёР»РёСЏ: " << c.surname << endl;
+	cout << "Р’РёРґ РїР»Р°С‚РµР¶Р°: " << c.payment_kind << endl;
+	cout << "Р”Р°С‚Р°: " << c.payment_date.ToString() << endl;
+	cout << "РЎСѓРјРјР° РїР»Р°С‚РµР¶Р°: " << c.summ << endl;
+	cout << "РџСЂРѕС†РµРЅС‚ РїРµРЅРё: " << c.percentage << endl;
+	cout << "РљРѕР»РёС‡РµСЃС‚РІРѕ РїСЂРѕСЃСЂРѕС‡РµРЅРЅС‹С… РґРЅРµР№: " << c.bad_days<< endl;
 }
 
-// функция вывода структуры "платеж" на консоль при поиске
+// С„СѓРЅРєС†РёСЏ РІС‹РІРѕРґР° СЃС‚СЂСѓРєС‚СѓСЂС‹ "РїР»Р°С‚РµР¶" РЅР° РєРѕРЅСЃРѕР»СЊ РїСЂРё РїРѕРёСЃРєРµ
 void OutputScreenPayment2(Payment c)
 {
-	cout << "Адрес: " << c.owner_address.ToString() << endl;
-	cout << "Фамилия: " << c.surname << endl;
-	cout << "Вид платежа: " << c.payment_kind << endl;
-	cout << "Дата: " << c.payment_date.ToString() << endl;
-	cout << "Сумма платежа: " << c.summ << endl;
-	cout << "Процент пени: " << c.percentage << endl;
-	cout << "Количество просроченных дней: " << c.bad_days << endl;
-	cout << "Сумма долга: " << c.summ+c.summ*c.percentage/100*c.bad_days << endl;
+	cout << "РђРґСЂРµСЃ: " << c.owner_address.ToString() << endl;
+	cout << "Р¤Р°РјРёР»РёСЏ: " << c.surname << endl;
+	cout << "Р’РёРґ РїР»Р°С‚РµР¶Р°: " << c.payment_kind << endl;
+	cout << "Р”Р°С‚Р°: " << c.payment_date.ToString() << endl;
+	cout << "РЎСѓРјРјР° РїР»Р°С‚РµР¶Р°: " << c.summ << endl;
+	cout << "РџСЂРѕС†РµРЅС‚ РїРµРЅРё: " << c.percentage << endl;
+	cout << "РљРѕР»РёС‡РµСЃС‚РІРѕ РїСЂРѕСЃСЂРѕС‡РµРЅРЅС‹С… РґРЅРµР№: " << c.bad_days << endl;
+	cout << "РЎСѓРјРјР° РґРѕР»РіР°: " << c.summ+c.summ*c.percentage/100*c.bad_days << endl;
 }
 
 
-//извлечение структуры "дата" из строки 
-// Формат:
-// день месяц год
+//РёР·РІР»РµС‡РµРЅРёРµ СЃС‚СЂСѓРєС‚СѓСЂС‹ "РґР°С‚Р°" РёР· СЃС‚СЂРѕРєРё 
+// Р¤РѕСЂРјР°С‚:
+// РґРµРЅСЊ РјРµСЃСЏС† РіРѕРґ
 MyDate FromString(string str)
 {
 	MyDate result;
@@ -295,14 +295,14 @@ MyDate FromString(string str)
 	}
 	catch (...)
 	{
-		cout << "Ошибка записи в файл!" << endl;
+		cout << "РћС€РёР±РєР° Р·Р°РїРёСЃРё РІ С„Р°Р№Р»!" << endl;
 	}
 	return result;
 }
 
-//извлечение структуры "адрес" из строки 
-// Формат:
-// дом дом квартира квартира
+//РёР·РІР»РµС‡РµРЅРёРµ СЃС‚СЂСѓРєС‚СѓСЂС‹ "Р°РґСЂРµСЃ" РёР· СЃС‚СЂРѕРєРё 
+// Р¤РѕСЂРјР°С‚:
+// РґРѕРј РґРѕРј РєРІР°СЂС‚РёСЂР° РєРІР°СЂС‚РёСЂР°
 MyAddress FromStrings(string str)
 {
 	MyAddress result;
@@ -317,19 +317,19 @@ MyAddress FromStrings(string str)
 	}
 	catch (...)
 	{
-		cout << "Ошибка записи в файл!" << endl;
+		cout << "РћС€РёР±РєР° Р·Р°РїРёСЃРё РІ С„Р°Р№Р»!" << endl;
 	}
 	return result;
 }
 
-//перевод структуры "платеж" в строку
+//РїРµСЂРµРІРѕРґ СЃС‚СЂСѓРєС‚СѓСЂС‹ "РїР»Р°С‚РµР¶" РІ СЃС‚СЂРѕРєСѓ
 string ToString(Payment c,int i)
 {
-	string result ="Запись № "+to_string(i)+"\n"+ "Адрес: "+c.owner_address.ToString()+"\n"+"Фамилия: "+c.surname+"\n"+"Вид платежа: "+c.payment_kind+"\n"+"Дата: "+c.payment_date.ToString()+"\n"+"Сумма платежа: " + to_string(c.summ) + "\n" + "Процент пени: " + to_string(c.percentage)+"\n" + "Количество просроченных дней: " + to_string(c.bad_days) + "\n";
+	string result ="Р—Р°РїРёСЃСЊ в„– "+to_string(i)+"\n"+ "РђРґСЂРµСЃ: "+c.owner_address.ToString()+"\n"+"Р¤Р°РјРёР»РёСЏ: "+c.surname+"\n"+"Р’РёРґ РїР»Р°С‚РµР¶Р°: "+c.payment_kind+"\n"+"Р”Р°С‚Р°: "+c.payment_date.ToString()+"\n"+"РЎСѓРјРјР° РїР»Р°С‚РµР¶Р°: " + to_string(c.summ) + "\n" + "РџСЂРѕС†РµРЅС‚ РїРµРЅРё: " + to_string(c.percentage)+"\n" + "РљРѕР»РёС‡РµСЃС‚РІРѕ РїСЂРѕСЃСЂРѕС‡РµРЅРЅС‹С… РґРЅРµР№: " + to_string(c.bad_days) + "\n";
 	return result;
 }
 
-////считывание структуры "платеж" из строки
+////СЃС‡РёС‚С‹РІР°РЅРёРµ СЃС‚СЂСѓРєС‚СѓСЂС‹ "РїР»Р°С‚РµР¶" РёР· СЃС‚СЂРѕРєРё
 Payment ReadFromString(ifstream& input)
 {
 	Payment result;
@@ -343,61 +343,61 @@ Payment ReadFromString(ifstream& input)
 		if (!input.eof())
 		{
 			getline(input, s,'\n');
-			string wrd = "Адрес: ";
+			string wrd = "РђРґСЂРµСЃ: ";
 			result.owner_address = FromStrings(s.substr(wrd.length(), s.length()));
 		}
 		if (!input.eof())
 		{
 			getline(input, s, '\n');
-			string wrd = "Фамилия: ";
+			string wrd = "Р¤Р°РјРёР»РёСЏ: ";
 			result.surname = s.substr(wrd.length(), s.length());
 		}
 		if (!input.eof())
 		{
 			getline(input, s, '\n');
-			string wrd = "Вид платежа: ";
+			string wrd = "Р’РёРґ РїР»Р°С‚РµР¶Р°: ";
 			result.payment_kind = s.substr(wrd.length(), s.length());
 		}
 		if (!input.eof())
 		{
 			getline(input, s, '\n');
-			string wrd = "Дата: ";
+			string wrd = "Р”Р°С‚Р°: ";
 			result.payment_date = FromString(s.substr(wrd.length(), s.length()));
 		}
 		if (!input.eof())
 		{
 			getline(input, s, '\n');
-			string wrd = "Сумма платежа: ";
+			string wrd = "РЎСѓРјРјР° РїР»Р°С‚РµР¶Р°: ";
 			result.summ = atoi(s.substr(wrd.length(), s.length()).c_str());
 		}
 		if (!input.eof())
 		{
 			getline(input, s, '\n');
-			string wrd = "Процент пени: ";
+			string wrd = "РџСЂРѕС†РµРЅС‚ РїРµРЅРё: ";
 			result.percentage = atoi(s.substr(wrd.length(), s.length()).c_str());
 		}
 		if (!input.eof())
 		{
 			getline(input, s, '\n');
-			string wrd = "Количество просроченных дней: ";
+			string wrd = "РљРѕР»РёС‡РµСЃС‚РІРѕ РїСЂРѕСЃСЂРѕС‡РµРЅРЅС‹С… РґРЅРµР№: ";
 			result.bad_days= atoi(s.substr(wrd.length(), s.length()).c_str());
 		}
 	}
 	catch (...)
 	{
-		cout << "Ошибка записи в файл!" << endl;
+		cout << "РћС€РёР±РєР° Р·Р°РїРёСЃРё РІ С„Р°Р№Р»!" << endl;
 	}
 	return result;
 }
 
 
-// поиск равного элемента по выбранному критерию
-// type_search - тип поиска
-//1 - по дому
-//2 - по квартире
-//3 - по фамилии
-//4 - по дате
-//5 - по наличию долга
+// РїРѕРёСЃРє СЂР°РІРЅРѕРіРѕ СЌР»РµРјРµРЅС‚Р° РїРѕ РІС‹Р±СЂР°РЅРЅРѕРјСѓ РєСЂРёС‚РµСЂРёСЋ
+// type_search - С‚РёРї РїРѕРёСЃРєР°
+//1 - РїРѕ РґРѕРјСѓ
+//2 - РїРѕ РєРІР°СЂС‚РёСЂРµ
+//3 - РїРѕ С„Р°РјРёР»РёРё
+//4 - РїРѕ РґР°С‚Рµ
+//5 - РїРѕ РЅР°Р»РёС‡РёСЋ РґРѕР»РіР°
 bool SearchElement(Payment m, Payment n, int type_search)
 {
 	switch (type_search)
@@ -417,45 +417,45 @@ bool SearchElement(Payment m, Payment n, int type_search)
 	}
 }
 
-// ввод критерия поиска в зависимости от выбранного типа 
-// type_search - тип поиска
-//1 - по дому
-//2 - по квартире
-//3 - по фамилии
-//4 - по дате
-//5 - по наличию долга
+// РІРІРѕРґ РєСЂРёС‚РµСЂРёСЏ РїРѕРёСЃРєР° РІ Р·Р°РІРёСЃРёРјРѕСЃС‚Рё РѕС‚ РІС‹Р±СЂР°РЅРЅРѕРіРѕ С‚РёРїР° 
+// type_search - С‚РёРї РїРѕРёСЃРєР°
+//1 - РїРѕ РґРѕРјСѓ
+//2 - РїРѕ РєРІР°СЂС‚РёСЂРµ
+//3 - РїРѕ С„Р°РјРёР»РёРё
+//4 - РїРѕ РґР°С‚Рµ
+//5 - РїРѕ РЅР°Р»РёС‡РёСЋ РґРѕР»РіР°
 Payment InputChangeTypeSearch(int type_search)
 {
 	Payment result;
 	switch (type_search)
 	{
 	case 1:
-		result.owner_address.house = InputNumber(0, 100, "Введите номер дома: ");
+		result.owner_address.house = InputNumber(0, 100, "Р’РІРµРґРёС‚Рµ РЅРѕРјРµСЂ РґРѕРјР°: ");
 		return result;
 	case 2:
-		result.owner_address.flat = InputNumber(0, 1000, "Введите номер квартиры: ");
+		result.owner_address.flat = InputNumber(0, 1000, "Р’РІРµРґРёС‚Рµ РЅРѕРјРµСЂ РєРІР°СЂС‚РёСЂС‹: ");
 		return result;
 	case 3:
-		result.surname = InputInformation("Введите фамилию: ");
+		result.surname = InputInformation("Р’РІРµРґРёС‚Рµ С„Р°РјРёР»РёСЋ: ");
 		return result;
 	case 4:
 		result.payment_date.InputDate();
 		return result;
 	case 5:
-		result.bad_days = InputNumber(0, 31, "Введите количество просроченных дней: ");
+		result.bad_days = InputNumber(0, 31, "Р’РІРµРґРёС‚Рµ РєРѕР»РёС‡РµСЃС‚РІРѕ РїСЂРѕСЃСЂРѕС‡РµРЅРЅС‹С… РґРЅРµР№: ");
 		return result;
 	default:
 		return result;
 	}
 }
 
-// сравнения структур в зависимости от выбранного поля для сортировки
-// type_search - тип поиска
-//1 - по дому
-//2 - по квартире
-//3 - по фамилии
-//4 - по дате
-//5 - по наличию долга
+// СЃСЂР°РІРЅРµРЅРёСЏ СЃС‚СЂСѓРєС‚СѓСЂ РІ Р·Р°РІРёСЃРёРјРѕСЃС‚Рё РѕС‚ РІС‹Р±СЂР°РЅРЅРѕРіРѕ РїРѕР»СЏ РґР»СЏ СЃРѕСЂС‚РёСЂРѕРІРєРё
+// type_search - С‚РёРї РїРѕРёСЃРєР°
+//1 - РїРѕ РґРѕРјСѓ
+//2 - РїРѕ РєРІР°СЂС‚РёСЂРµ
+//3 - РїРѕ С„Р°РјРёР»РёРё
+//4 - РїРѕ РґР°С‚Рµ
+//5 - РїРѕ РЅР°Р»РёС‡РёСЋ РґРѕР»РіР°
 int Sorte(Payment n, Payment m, int type_search)
 {
 	switch (type_search)
