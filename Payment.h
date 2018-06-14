@@ -6,7 +6,6 @@
 #include <iostream>
 #include <string>
 #include "HelpUtils.h"
-//using namespace std;
 
 //подтип адрес 
 class MyAddress {
