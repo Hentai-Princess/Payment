@@ -202,19 +202,19 @@ public:
 	// изменение структуры "платеж"
 	Payment ChangePayment(Payment &result)
 	{
-		if (InputNumber(0, 1, "Вы хотите изменить адрес  (0 - нет, 1 - да)\nВыш выбор: ") == 1)
+		if (InputNumber(0, 1, "Вы хотите изменить адрес  (0 - нет, 1 - да)\nВаш выбор: ") == 1)
 			result.owner_address.InputAddress();
-		if (InputNumber(0, 1, "Вы хотите изменить фамилию " + result.surname + " (0 - нет, 1 - да)\nВыш выбор: ") == 1)
+		if (InputNumber(0, 1, "Вы хотите изменить фамилию " + result.surname + " (0 - нет, 1 - да)\nВаш выбор: ") == 1)
 			result.surname = InputInformation("Введите новую фамилию: ");
-		if (InputNumber(0, 1, "Вы хотите изменить вид платежа " + result.payment_kind + " (0 - нет, 1 - да)\nВыш выбор: ") == 1)
+		if (InputNumber(0, 1, "Вы хотите изменить вид платежа " + result.payment_kind + " (0 - нет, 1 - да)\nВаш выбор: ") == 1)
 			result.payment_kind = InputInformation("Введите новый вид платежа: ");
-		if (InputNumber(0, 1, "Вы хотите изменить дату платежа  (0-нет, 1 - да)\nВыш выбор: ") == 1)
+		if (InputNumber(0, 1, "Вы хотите изменить дату платежа  (0-нет, 1 - да)\nВаш выбор: ") == 1)
 			result.payment_date.InputDate();
-		if (InputNumber(0, 1, "Вы хотите изменить сумму платежа " + to_string(result.summ) + "(0 - нет, 1 - да) \nВыш выбор: ") == 1)
-			result.summ = InputNumber(0, 10000, "Введите новую сумму платежа: ");
-		if (InputNumber(0, 1, "Вы хотите изменить процент пени " + to_string(result.percentage) + " (0 - нет, 1 - да)\nВыш выбор: ") == 1)
+		if (InputNumber(0, 1, "Вы хотите изменить сумму платежа " + to_string(result.summ) + "(0 - нет, 1 - да) \nВаш выбор: ") == 1)
+			result.summ = InputNumber(0, 10000, "Введите новую сумму платежа в рублях: ");
+		if (InputNumber(0, 1, "Вы хотите изменить процент пени " + to_string(result.percentage) + " (0 - нет, 1 - да)\nВаш выбор: ") == 1)
 			result.percentage = InputNumber(0, 100, "Введите новый процент пени: ");
-		if (InputNumber(0, 1, "Вы хотите изменить количество просроченных дней " + to_string(result.bad_days) + " (0 - нет, 1 - да)\nВыш выбор: ") == 1)
+		if (InputNumber(0, 1, "Вы хотите изменить количество просроченных дней " + to_string(result.bad_days) + " (0 - нет, 1 - да)\nВаш выбор: ") == 1)
 			result.bad_days = InputNumber(0, 31, "Введите новое количество просроченных дней: ");
 
 		return result;
@@ -243,7 +243,7 @@ Payment InputScreenPayment()
 	c.surname = InputInformation("Введите фамилию: ");
 	c.payment_kind = InputInformation("Введите вид платежа: ");
 	c.payment_date.InputDate();
-	c.summ = InputNumber(0, 10000, "Введите сумму платежа (0 - 10000): ");
+	c.summ = InputNumber(0, 10000, "Введите сумму платежа (0 - 10000) в рублях: ");
 	c.percentage = InputNumber(0, 100, "Введите процент пени (0-100): ");
 	c.bad_days = InputNumber(0, 31, "Введите количество просроченных дней (0-31): ");
 	return c;
@@ -256,7 +256,7 @@ void OutputScreenPayment(Payment c)
 	cout << "Фамилия: " << c.surname << endl;
 	cout << "Вид платежа: " << c.payment_kind << endl;
 	cout << "Дата: " << c.payment_date.ToString() << endl;
-	cout << "Сумма платежа: " << c.summ << endl;
+	cout << "Сумма платежа в рублях: " << c.summ << endl;
 	cout << "Процент пени: " << c.percentage << endl;
 	cout << "Количество просроченных дней: " << c.bad_days<< endl;
 }
@@ -268,10 +268,11 @@ void OutputScreenPayment2(Payment c)
 	cout << "Фамилия: " << c.surname << endl;
 	cout << "Вид платежа: " << c.payment_kind << endl;
 	cout << "Дата: " << c.payment_date.ToString() << endl;
-	cout << "Сумма платежа: " << c.summ << endl;
+	cout << "Сумма платежа в рублях: " << c.summ << endl;
 	cout << "Процент пени: " << c.percentage << endl;
 	cout << "Количество просроченных дней: " << c.bad_days << endl;
-	cout << "Сумма долга: " << c.summ+c.summ*c.percentage/100*c.bad_days << endl;
+	cout.precision(3);
+	cout << "Сумма долга в рублях: " << c.summ+c.summ*c.percentage/100*c.bad_days << endl;
 }
 
 
@@ -366,7 +367,7 @@ Payment ReadFromString(ifstream& input)
 		if (!input.eof())
 		{
 			getline(input, s, '\n');
-			string wrd = "Сумма платежа: ";
+			string wrd = "Сумма платежа в рублях: ";
 			result.summ = atoi(s.substr(wrd.length(), s.length()).c_str());
 		}
 		if (!input.eof())
