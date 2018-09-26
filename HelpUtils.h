@@ -45,17 +45,17 @@ bool CorrectSymbol(char c)
 {
 	switch (c)
 	{
-	case '.':
-	case '*':
-	case '?':
-	case '<':
-	case '>':
-	case ':':
-	case '|':
-	case '/':
-		return false;
-	default:
-		return true;
+		case '.':
+		case '*':
+		case '?':
+		case '<':
+		case '>':
+		case ':':
+		case '|':
+		case '/':
+			return false;
+		default:
+			return true;
 	}
 }
 
