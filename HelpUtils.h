@@ -79,7 +79,7 @@ string InputFileName()
 	{
 		cout << "Введите имя файла (без расширения, имя свыше 35 символов будет обрезано):  ";
 		cin >> filename;
-		if (filename.length() > 35)
+		if filename.length() > 35
 			filename.erase(filename.begin(), filename.begin() + 35);
 		if (CorrectName(filename))
 		{
