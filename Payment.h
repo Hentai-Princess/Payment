@@ -39,7 +39,7 @@ public:
 		string message = "";  // сообщение о причине ошибки
 		do
 		{
-			if (!correct_address)
+			if !correct_address
 				cout << message << endl;
 			house = InputNumber(1, 100, "Ввод адреса:\nВведите номер дома (1-100): ");
 			flat = InputNumber(1, 1000, "Введите номер квартиры (1-1000): ");
@@ -76,9 +76,9 @@ class MyDate {
 	// проверка является ли год високосным
 	bool IsLeap(int year)
 	{
-		if (year % 4)
+		if year % 4
 			return false;
-		if (year % 100)
+		if year % 100
 			return true;
 		return !(year % 400);
 	}
