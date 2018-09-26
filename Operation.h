@@ -74,7 +74,7 @@ public:
 	}
 
 	//размер вектора
-	int size()
+	int Size()
 	{
 		return vect.size();
 	}
