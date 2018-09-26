@@ -18,13 +18,12 @@ class MyAddress {
 				return false;
 			}
 	}
-
-public:
+private:
 	//дом
 	int house;
 	//квартира
 	int flat;
-
+public:
 	//конструктор по умолчанию
 	MyAddress()
 	{
@@ -102,14 +101,14 @@ class MyDate {
 			}
 		}
 	}
-public:
+private:
 	// день
 	int day;
 	// месяц
 	int month;
 	// год
 	int year;
-
+public:
 	// конструктор по умолчанию
 	MyDate()
 	{
@@ -171,7 +170,7 @@ public:
 };
 
 class Payment {
-public:
+private:
 	// адрес
 	MyAddress owner_address;
 	// фамилия
@@ -186,7 +185,7 @@ public:
 	int percentage;
 	// количество просроченных дней
 	int bad_days;
-
+public:
 	// конструктор по умолчанию
 	Payment()
 	{
