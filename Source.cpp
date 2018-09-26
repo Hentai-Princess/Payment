@@ -78,7 +78,7 @@ bool ChangeInputData()
 					case 3:
 						task.OutputScreen(task.vect, OutputScreenPayment);
 						numb = InputNumber(0, task.size(), "Введите номер изменяеиого эл-та (0 - если передумали изменять): ");
-						if (numb != 0)
+						if numb != 0
 							task.vect[numb-1] = elem.ChangePayment(task.vect[numb-1]);
 						break;
 		
@@ -93,7 +93,7 @@ bool ChangeInputData()
 						numb = InputNumber(1, 5, "Выберите тип поиска:\n1 - по дому\n2 - по квартире\n3 - по фамилии\n4 - по дате\n5 - по наличию долга\nВаш выбор: ");
 						search_elem = InputChangeTypeSearch(numb);
 						subset = task.LinearySearch(search_elem,SearchElement,numb);
-						if (subset.size() != 0)
+						if subset.size() != 0
 							task.OutputScreen(subset, OutputScreenPayment2);
 						else
 							cout << "Элементы не найдены" << endl;
@@ -103,7 +103,7 @@ bool ChangeInputData()
 						numb = InputNumber(1, 5, "Выберите тип поиска:\n1 - по дому\n2 - по квартире\n3 - по фамилии\n4 - по дате\n5 - по наличию долга\nВаш выбор: ");
 						search_elem = InputChangeTypeSearch(numb);
 						subset = task.BinarySearch(numb,search_elem, Sorte,SearchElement);
-						if (subset.size() != 0)
+						if subset.size() != 0
 							task.OutputScreen(subset, OutputScreenPayment2);
 						else
 							cout << "Элементы не найдены" << endl;
